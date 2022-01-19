@@ -1,66 +1,69 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Client {
 
+    private ArrayList<Pet> pets;
     private static int counter;
 
-    private  int clientNumber;
+    private int clientNumber;
     private String firstName;
     private String lastName;
-    private String phoneNum;
-    private Animal pets;
+    private String phone;
+
     private boolean ads;
 
-    public Client(String firstName, String lastName, String phoneNum, boolean ads) {
+    public Client(String firstName, String lastName, String phone, boolean ads) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNum = phoneNum;
-        //this.pets = pets;
+        this.phone = phone;
         this.ads = ads;
+        pets = new ArrayList<>();
         clientNumber = ++counter;
 
 
     }
 
-
-    public boolean isAds() {
-        return ads;
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
     public int getClientNumber() {
         return clientNumber;
     }
 
-    public Animal getPets() {
+    public boolean isAds() {
+        return ads;
+    }
+
+    public ArrayList<Pet> getPets() {
         return pets;
     }
+    public int getPetChipNumber(Client client){
 
-    public void setPets(Animal pets) {
-        this.pets = pets;
+        client.getPets()
+
     }
 
-    public String getFirstName() {
-        return firstName;
+
+    public void addPets(Pet pet){
+        pets.add(pet);
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+
+
+    public void removePet(int chipNumber){
+
+        pets.remove(chipNumber);
+
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setAds(Boolean ads){
+        this.ads = ads;
     }
+    public void sendMessage(String adContent) {
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
     }
 
 
@@ -72,9 +75,11 @@ public class Client {
                 "clientNumber=" + clientNumber +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
+                ", phone='" + phone + '\'' +
                 ", pets=" + pets +
                 ", ads=" + ads +
                 '}';
     }
+
+
 }
